@@ -1,17 +1,26 @@
 import HeroesList from "./heroes-list";
 import useHeroes from "./hooks/useHeroes";
 
-function App() {
-  const { heroes } = useHeroes();
+const App: React.FC = () => {
+  const { heroes, setHeroes } = useHeroes();
 
-  console.log(heroes);
+  function handleClick(heroId: number) {
+    const heroIndex = heroes.findIndex((hero) => hero.id === heroId);
+    const copiedHeroes = [...heroes];
+
+    copiedHeroes[heroIndex] = {
+      ...copiedHeroes[heroIndex],
+      available: !copiedHeroes[heroIndex].available,
+    };
+    setHeroes(copiedHeroes);
+  }
 
   return (
     <div>
       <h1>App</h1>
-      <HeroesList heroes={heroes} />
+      <HeroesList heroes={heroes} handleClick={handleClick} />
     </div>
   );
-}
+};
 
 export default App;

@@ -8,9 +8,10 @@ interface Hero {
 
 interface ReceivedProps {
   heroes: Hero[];
+  handleClick: (heroId: number) => void;
 }
 
-const HeroesList: React.FC<ReceivedProps> = ({ heroes }) => {
+const HeroesList: React.FC<ReceivedProps> = ({ heroes, handleClick }) => {
   console.log(heroes);
 
   return (
@@ -21,6 +22,7 @@ const HeroesList: React.FC<ReceivedProps> = ({ heroes }) => {
           <div
             key={hero.id}
             style={{ flexBasis: "33%", flexShrink: 1, cursor: "pointer" }}
+            onClick={() => handleClick(hero.id)}
           >
             <CurrentHero
               id={hero.id}
