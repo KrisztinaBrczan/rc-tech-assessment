@@ -1,5 +1,9 @@
+import useHeroes from "../hooks/useHeroes";
+
 const ErrorMessage: React.FC = () => {
-  return <h4>Failed to fetch heroes</h4>;
+  const { error } = useHeroes();
+
+  return <h4>{error}</h4>;
 };
 
 export default ErrorMessage;
