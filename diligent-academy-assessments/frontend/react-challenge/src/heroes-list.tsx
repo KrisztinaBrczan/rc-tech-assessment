@@ -1,3 +1,5 @@
+import CurrentHero from "./components/CurrentHero";
+
 interface Hero {
   id: number;
   name: string;
@@ -17,11 +19,11 @@ const HeroesList: React.FC<ReceivedProps> = ({ heroes }) => {
       <div style={{ display: "flex", flexWrap: "wrap", gap: "5px" }}>
         {heroes.map((hero) => (
           <div style={{ flexBasis: "33%", flexShrink: 1, cursor: "pointer" }}>
-            <div key={hero.id} style={{ padding: "2px 5px" }}>
-              <div style={{ color: hero.available ? "green" : "red" }}>
-                {hero.id}. {hero.name} {hero.available ? '"Available"' : ""}
-              </div>
-            </div>
+            <CurrentHero
+              id={hero.id}
+              name={hero.name}
+              available={hero.available}
+            />
           </div>
         ))}
       </div>
