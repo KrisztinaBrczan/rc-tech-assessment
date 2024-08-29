@@ -1,6 +1,10 @@
 import HeroesList from "./heroes-list";
+import useHeroes from "./hooks/useHeroes";
 
 function App() {
+  const { heroes } = useHeroes();
+
+  console.log(heroes);
 
   return (
     <div>
