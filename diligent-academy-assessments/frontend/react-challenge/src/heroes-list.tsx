@@ -21,8 +21,6 @@ const HeroesList: React.FC<ReceivedProps> = ({
   isLoading,
   error,
 }) => {
-  console.log(heroes);
-
   return (
     <>
       <h2>Heroes</h2>
