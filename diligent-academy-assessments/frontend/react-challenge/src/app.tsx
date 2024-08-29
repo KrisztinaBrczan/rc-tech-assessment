@@ -4,7 +4,7 @@ import useHeroes from "./hooks/useHeroes";
 const App: React.FC = () => {
   const { heroes, setHeroes } = useHeroes();
 
-  function handleClick(heroId: number) {
+  function handleAvailabilityChange(heroId: number) {
     const heroIndex = heroes.findIndex((hero) => hero.id === heroId);
     const copiedHeroes = [...heroes];
 
@@ -18,7 +18,10 @@ const App: React.FC = () => {
   return (
     <div>
       <h1>App</h1>
-      <HeroesList heroes={heroes} handleClick={handleClick} />
+      <HeroesList
+        heroes={heroes}
+        handleAvailabilityChange={handleAvailabilityChange}
+      />
     </div>
   );
 };
