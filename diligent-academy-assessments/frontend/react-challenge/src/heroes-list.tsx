@@ -18,7 +18,10 @@ const HeroesList: React.FC<ReceivedProps> = ({ heroes }) => {
       <h2>Heroes</h2>
       <div style={{ display: "flex", flexWrap: "wrap", gap: "5px" }}>
         {heroes.map((hero) => (
-          <div style={{ flexBasis: "33%", flexShrink: 1, cursor: "pointer" }}>
+          <div
+            key={hero.id}
+            style={{ flexBasis: "33%", flexShrink: 1, cursor: "pointer" }}
+          >
             <CurrentHero
               id={hero.id}
               name={hero.name}
