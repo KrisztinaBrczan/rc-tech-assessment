@@ -1,4 +1,5 @@
 import CurrentHero from "./components/CurrentHero";
+import ErrorMessage from "./components/ErrorMessage";
 import LoadingMessage from "./components/LoadingMessage";
 
 interface Hero {
@@ -26,21 +27,24 @@ const HeroesList: React.FC<ReceivedProps> = ({
     <>
       <h2>Heroes</h2>
       {isLoading && !error && <LoadingMessage />}
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "5px" }}>
-        {heroes.map((hero) => (
-          <div
-            key={hero.id}
-            style={{ flexBasis: "33%", flexShrink: 1, cursor: "pointer" }}
-            onClick={() => handleAvailabilityChange(hero.id)}
-          >
-            <CurrentHero
-              id={hero.id}
-              name={hero.name}
-              available={hero.available}
-            />
-          </div>
-        ))}
-      </div>
+      {error && !isLoading && <ErrorMessage />}
+      {!isLoading && !error && (
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "5px" }}>
+          {heroes.map((hero) => (
+            <div
+              key={hero.id}
+              style={{ flexBasis: "33%", flexShrink: 1, cursor: "pointer" }}
+              onClick={() => handleAvailabilityChange(hero.id)}
+            >
+              <CurrentHero
+                id={hero.id}
+                name={hero.name}
+                available={hero.available}
+              />
+            </div>
+          ))}
+        </div>
+      )}
     </>
   );
 };
