@@ -8,9 +8,13 @@ interface Hero {
 
 interface ReceivedProps {
   heroes: Hero[];
+  handleAvailabilityChange: (heroId: number) => void;
 }
 
-const HeroesList: React.FC<ReceivedProps> = ({ heroes }) => {
+const HeroesList: React.FC<ReceivedProps> = ({
+  heroes,
+  handleAvailabilityChange,
+}) => {
   console.log(heroes);
 
   return (
@@ -21,6 +25,7 @@ const HeroesList: React.FC<ReceivedProps> = ({ heroes }) => {
           <div
             key={hero.id}
             style={{ flexBasis: "33%", flexShrink: 1, cursor: "pointer" }}
+            onClick={() => handleAvailabilityChange(hero.id)}
           >
             <CurrentHero
               id={hero.id}
