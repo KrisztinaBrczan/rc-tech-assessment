@@ -2,7 +2,7 @@ import HeroesList from "./heroes-list";
 import useHeroes from "./hooks/useHeroes";
 
 const App: React.FC = () => {
-  const { heroes, setHeroes } = useHeroes();
+  const { heroes, setHeroes, isLoading, error } = useHeroes();
 
   function handleAvailabilityChange(heroId: number) {
     const heroIndex = heroes.findIndex((hero) => hero.id === heroId);
@@ -21,6 +21,8 @@ const App: React.FC = () => {
       <HeroesList
         heroes={heroes}
         handleAvailabilityChange={handleAvailabilityChange}
+        isLoading={isLoading}
+        error={error}
       />
     </div>
   );
